@@ -1,0 +1,21 @@
+﻿<Window x:Class="project_looplicht.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:project_looplicht"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Orientation="Vertical" Margin="10">
+        <GroupBox Header="tijd" Padding="10" Margin="10">
+            <TextBox></TextBox>
+        </GroupBox>
+        <GroupBox Header="afstand" Padding="10" Margin="10">
+            <TextBox></TextBox>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal">
+            <Button Name="btn_calc" Margin="10, 10, 10, 10">calculate</Button>
+            <Button Name="btn_start" Margin="10, 10, 10, 10">start</Button>
+        </StackPanel>
+    </StackPanel>
+</Window>
