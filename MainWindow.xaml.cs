@@ -16,6 +16,7 @@ using System.Windows.Threading;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows.Markup;
+using berekeningen;
 
 namespace project_looplicht
 {
@@ -26,7 +27,7 @@ namespace project_looplicht
     {
         SerialPort _serialPort;
         byte[] _data;
-        //DispatcherTimer _dispatcherTimer;
+        DispatcherTimer _dispatcherTimer;
         public MainWindow()
         {
             InitializeComponent();
@@ -43,10 +44,7 @@ namespace project_looplicht
 
             _data = new byte[96];
 
-            /*_dispatcherTimer = new DispatcherTimer();
-            _dispatcherTimer.Interval = TimeSpan.FromSeconds(0.1);
-            _dispatcherTimer.Tick += _dispatcherTimer_Tick;
-            _dispatcherTimer.Start();*/
+            _dispatcherTimer = new DispatcherTimer();            
         }
 
         private void cbxPortName_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,20 +61,16 @@ namespace project_looplicht
                 }
             }
         }
-        private void _dispatcherTimer_Tick(object? sender, EventArgs e)
-        {
-            SendLedData(_data, _serialPort);
-        }
-
-        private void SendLedData(byte[] data, SerialPort serialPort)
-        {
-            if (serialPort != null && serialPort.IsOpen)
+        private void SendLedData(object? sender, EventArgs e)
+        {            
+            if (_serialPort != null && _serialPort.IsOpen)
             {
-                for (int i = 0; i < data.Length; i++)
+                for (int i = 0; i < _data.Length; i++)
                 {
-                    data[i] = 125;
-                    serialPort.Write(data, 0, data.Length);
+                    _data[i] = 125;
+                    _serialPort.Write(_data, 0, _data.Length);
                 }
+                _dispatcherTimer.Stop();
             }
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -88,7 +82,14 @@ namespace project_looplicht
 
         private void btn_start_Click(object sender, RoutedEventArgs e)
         {
-            SendLedData(_data, _serialPort);
+            berekening vertraging = new berekening();
+            vertraging.Tijd = Convert.ToDouble(tbx_tijd.Text);
+            vertraging.Afstand = Convert.ToInt16(tbx_afstand.Text);
+            vertraging.AantalLeds = 32;
+
+            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(vertraging.BerekenWachtTijd());
+            _dispatcherTimer.Tick += SendLedData;
+            _dispatcherTimer.Start();
         }
     }
 }
