@@ -5,17 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:project_looplicht"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="looplicht" Height="450" Width="800" Closing="Window_Closing">
     <StackPanel Orientation="Vertical" Margin="10">
+        <GroupBox Header="COM-poort" Padding="10" Margin="10">
+            <ComboBox Name="cbxPortName" Margin="10" SelectionChanged="cbxPortName_SelectionChanged"></ComboBox>
+        </GroupBox>
         <GroupBox Header="tijd" Padding="10" Margin="10">
-            <TextBox></TextBox>
+            <TextBox Name="tbx_tijd"></TextBox>
         </GroupBox>
         <GroupBox Header="afstand" Padding="10" Margin="10">
-            <TextBox></TextBox>
+            <TextBox Name="tbx_afstand"></TextBox>
         </GroupBox>
         <StackPanel Orientation="Horizontal">
             <Button Name="btn_calc" Margin="10, 10, 10, 10">calculate</Button>
-            <Button Name="btn_start" Margin="10, 10, 10, 10">start</Button>
+            <Button Name="btn_start" Margin="10, 10, 10, 10" Click="btn_start_Click">start</Button>
         </StackPanel>
     </StackPanel>
 </Window>

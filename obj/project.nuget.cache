@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "a82DVJK4/PW+iWBWQdUnn6MhNMHo8U0SRVO32CiqrC4RIoMO17HTJ9S2B8HSFN0TYe8MXaoscXe33Vc8EPWMSA==",
+  "dgSpecHash": "Ar9ywSdOHhoZto031c1cxu4/XKwdCZXYORw9mr+lI/bzbVVl7PZgCojsKNJEJx4KGKR0TUQxlFTSszzhokAXHQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\tdesp\\OneDrive\\Documenten\\Vives Fase 1\\ICT\\project_looplicht\\project_looplicht.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\tdesp\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\7.0.0\\runtime.linux-arm.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\tdesp\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\7.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\tdesp\\.nuget\\packages\\runtime.linux-x64.runtime.native.system.io.ports\\7.0.0\\runtime.linux-x64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\tdesp\\.nuget\\packages\\runtime.native.system.io.ports\\7.0.0\\runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\tdesp\\.nuget\\packages\\runtime.osx-arm64.runtime.native.system.io.ports\\7.0.0\\runtime.osx-arm64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\tdesp\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\7.0.0\\runtime.osx-x64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\tdesp\\.nuget\\packages\\system.io.ports\\7.0.0\\system.io.ports.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
