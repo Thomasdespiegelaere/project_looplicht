@@ -1,33 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
-namespace berekeningen
+namespace Looplicht
 {
     internal class berekening
     {
-		private double tijd;
+		private string tijd;
 
-		public double Tijd
+		public string Tijd
 		{
 			get { return tijd; }
 			set 
 			{
-				tijd = value;
+				if (value != "")
+				{
+                    if (value.Contains('.'))
+                    {
+                        value = value.Replace('.', ',');
+                        tijd = value;
+                    }
+                    tijd = value;
+                }
+				else
+				{
+					MessageBox.Show("geef een tijd in");
+				}
             }
 		}
 
-		private int afstand;
+		private string afstand;
 
-		public int Afstand
+		public string Afstand
 		{
 			get { return afstand; }
 			set 
 			{
-				afstand = value;
+                if (value != "")
+                {
+					if (value.Contains('.'))
+					{
+                        value = value.Replace('.', ',');
+                        afstand = value;
+                    }
+                    afstand = value;
+                }
+                else
+                {
+                    MessageBox.Show("geef een afstand in");
+                } 
             }
 		}
 
@@ -38,10 +65,11 @@ namespace berekeningen
 			get { return aantalLeds; }
 			set { aantalLeds = value; }
 		}
+
 		public double BerekenWachtTijd()
 		{
-			double vertraging = ((tijd / aantalLeds) * 1000.0);
+			double vertraging = ((Convert.ToDouble(tijd) / aantalLeds) * 1000.0) - 137;  // 0.137 is ongeveer de verstuurtijd van seriele COM
 			return vertraging;
         }
-	}
+    }
 }

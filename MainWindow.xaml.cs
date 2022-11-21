@@ -16,7 +16,7 @@ using System.Windows.Threading;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows.Markup;
-using berekeningen;
+using Looplicht;
 
 namespace project_looplicht
 {
@@ -28,6 +28,7 @@ namespace project_looplicht
         SerialPort _serialPort;
         byte[] _data;
         DispatcherTimer _dispatcherTimer;
+        int _i;
         public MainWindow()
         {
             InitializeComponent();
@@ -61,34 +62,43 @@ namespace project_looplicht
                 }
             }
         }
-        private void SendLedData(object? sender, EventArgs e)
-        {            
-            if (_serialPort != null && _serialPort.IsOpen)
-            {
-                for (int i = 0; i < _data.Length; i++)
-                {
-                    _data[i] = 125;
-                    _serialPort.Write(_data, 0, _data.Length);
-                }
-                _dispatcherTimer.Stop();
-            }
-        }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            byte[] data = new byte[96];
-            _serialPort.Write(data, 0, 96);          
-            _serialPort.Dispose();
+            if (_serialPort != null && _serialPort.IsOpen)
+            {
+                byte[] data = new byte[96];
+                _serialPort.Write(data, 0, 96);
+                _serialPort.Dispose();
+            }                      
+        }
+        public void leds(object? sender, EventArgs e)
+        {
+            if (_serialPort != null && _serialPort.IsOpen)
+            {
+                if (!(_i >= 95))
+                {
+                    _data[_i] = Convert.ToByte(sldr_Red.Value);
+                    _data[_i + 1] = Convert.ToByte(sldr_Green.Value);
+                    _data[_i + 2] = Convert.ToByte(sldr_Blue.Value);
+                    _serialPort.Write(_data, 0, _data.Length);
+                    _i += 3;
+                }
+                else
+                {
+                    _dispatcherTimer.Stop();
+                }
+            }
         }
 
         private void btn_start_Click(object sender, RoutedEventArgs e)
         {
-            berekening vertraging = new berekening();
-            vertraging.Tijd = Convert.ToDouble(tbx_tijd.Text);
-            vertraging.Afstand = Convert.ToInt16(tbx_afstand.Text);
-            vertraging.AantalLeds = 32;
+            berekening berekening = new berekening();
+            berekening.Tijd = tbx_tijd.Text;
+            berekening.Afstand = tbx_afstand.Text;
+            berekening.AantalLeds = 32;
 
-            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(vertraging.BerekenWachtTijd());
-            _dispatcherTimer.Tick += SendLedData;
+            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(berekening.BerekenWachtTijd());
+            _dispatcherTimer.Tick += leds;
             _dispatcherTimer.Start();
         }
     }
