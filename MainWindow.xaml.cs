@@ -85,7 +85,19 @@ namespace project_looplicht
                 }
                 else
                 {
+                    _i = 0;
                     _dispatcherTimer.Stop();
+                    _data[95] = 0;
+                    _data[94] = 0;
+                    _data[93] = 0;
+                    _serialPort.Write(_data, 0, 96);
+                }
+                if (_i > 3)
+                {
+                    _data[_i - 3] = 0;
+                    _data[_i - 4] = 0;
+                    _data[_i - 5] = 0;
+                    _serialPort.Write(_data, 0, _data.Length);
                 }
             }
         }

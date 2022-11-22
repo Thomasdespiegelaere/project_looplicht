@@ -68,8 +68,8 @@ namespace Looplicht
 
 		public double BerekenWachtTijd()
 		{
-			double vertraging = ((Convert.ToDouble(tijd) / aantalLeds) * 1000.0) - 137;  // 0.137 is ongeveer de verstuurtijd van seriele COM
-			return vertraging;
+			double vertraging = ((Convert.ToDouble(tijd) / aantalLeds) * 1000.0) - 200;  // 200 is ongeveer de verstuurtijd van seriele COM
+			return vertraging;															 // + de tijd die het duurt om de loop door te nemen.
         }
     }
 }
