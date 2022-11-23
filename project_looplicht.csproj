@@ -8,7 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="1491313953-play_82992.png" />
+    <None Remove="athletics_icon-icons.com_67243.png" />
+    <None Remove="sport_track_1524.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.IO.Ports" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="1491313953-play_82992.png" />
+    <Resource Include="athletics_icon-icons.com_67243.png" />
+    <Resource Include="sport_track_1524.png" />
   </ItemGroup>
 
 </Project>

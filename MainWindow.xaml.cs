@@ -113,5 +113,12 @@ namespace project_looplicht
             _dispatcherTimer.Tick += leds;
             _dispatcherTimer.Start();
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            sldr_Blue.Width = scp_main.ActualWidth / 3;
+            sldr_Red.Width = scp_main.ActualWidth / 3;
+            sldr_Green.Width = scp_main.ActualWidth / 3;
+        }
     }
 }
