@@ -6,27 +6,28 @@
         xmlns:local="clr-namespace:project_looplicht"
         x:Class="project_looplicht.MainWindow"
         mc:Ignorable="d"
-        Title="looplicht" Height="450" Width="800" Closing="Window_Closing" Background="#303030" Icon="/athletics_icon-icons.com_67243.png" SizeChanged="Window_SizeChanged">
-    <StackPanel Orientation="Vertical" Margin="10" Name="scp_main">
-        <GroupBox Header="COM-poort" Foreground="White" Padding="10" Margin="10">
+        Title="looplicht" Height="450" Width="800" Closing="Window_Closing" Background="white" Icon="/athletics_icon-icons.com_67243.png" SizeChanged="Window_SizeChanged">
+    <StackPanel Orientation="Vertical" Name="scp_main">
+        <GroupBox Header="COM-poort" Foreground="Black" Padding="10" Margin="10" Name="gbx_com" BorderBrush="Gray">
             <ComboBox x:Name="cbxPortName" Margin="10" SelectionChanged="cbxPortName_SelectionChanged"/>
         </GroupBox>
-        <GroupBox Header="tijd" Foreground="White" Padding="10" Margin="10">
+        <GroupBox Header="tijd" Foreground="Black" Padding="10" Margin="10" Name="gbx_tijd" BorderBrush="Gray">
             <TextBox x:Name="tbx_tijd" ToolTip="geef een tijd in seconden in"/>
         </GroupBox>
-        <GroupBox Header="afstand" Foreground="White" Padding="10" Margin="10">
+        <GroupBox Header="afstand" Foreground="Black" Padding="10" Margin="10" Name="gbx_afstand" BorderBrush="Gray">
             <TextBox x:Name="tbx_afstand" ToolTip="geef een afstand in meter in"/>
         </GroupBox>
         <StackPanel Orientation="Horizontal">
-            <Slider Background="Red" Margin="10" Width="240" Maximum="255" Name="sldr_Red" TickFrequency="1" IsSnapToTickEnabled="True" Minimum="0"></Slider>
-            <Slider Background="Green" Margin="10" Width="240" Maximum="255" Name="sldr_Green" TickFrequency="1" IsSnapToTickEnabled="True" Minimum="0"></Slider>
-            <Slider Background="Blue" Margin="10" Width="240" Maximum="255" Value="125" Name="sldr_Blue" TickFrequency="1" IsSnapToTickEnabled="True" Minimum="0"></Slider>
+            <Slider Background="Red" Margin="10" Width="200" Maximum="255" Name="sldr_Red" TickFrequency="1" IsSnapToTickEnabled="True" Minimum="0"></Slider>
+            <Slider Background="Green" Margin="10" Width="200" Maximum="255" Name="sldr_Green" TickFrequency="1" IsSnapToTickEnabled="True" Minimum="0"></Slider>
+            <Slider Background="Blue" Margin="10" Width="200" Maximum="255" Value="125" Name="sldr_Blue" TickFrequency="1" IsSnapToTickEnabled="True" Minimum="0"></Slider>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <Button x:Name="btn_start" Margin="10, 10, 10, 10" Click="btn_start_Click" Width="70" Background="#303030" BorderBrush="#303030">
+            <Button x:Name="btn_start" Margin="10, 10, 10, 10" Click="btn_start_Click" Width="70" Background="White" BorderBrush="White">
                 <Image Width="70" Height="60" Source="/1491313953-play_82992.png"></Image>
             </Button>
+            <Label Margin="10, 25, 0, 10" Name="lbl_darkmode">Darkmode: </Label>
+            <CheckBox Width="20" Height="20" BorderThickness="2" Margin="0, 10, 10, 10" Name="cbx_darkmode" Click="cbx_darkmode_Click"></CheckBox>
         </StackPanel>
-        <Image Width="150" Height="60" Source="/sport_track_1524.png"></Image>
     </StackPanel>
 </Window>

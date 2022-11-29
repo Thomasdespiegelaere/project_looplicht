@@ -116,9 +116,40 @@ namespace project_looplicht
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            sldr_Blue.Width = scp_main.ActualWidth / 3;
-            sldr_Red.Width = scp_main.ActualWidth / 3;
-            sldr_Green.Width = scp_main.ActualWidth / 3;
+            sldr_Blue.Width = scp_main.ActualWidth / 3 - 20;
+            sldr_Red.Width = scp_main.ActualWidth / 3 - 20;
+            sldr_Green.Width = scp_main.ActualWidth / 3 - 20;
+        }
+
+        private void cbx_darkmode_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)cbx_darkmode.IsChecked)
+            {
+                SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(48, 48, 48));
+                scp_main.Background = brush;
+                gbx_com.Foreground = Brushes.White;
+                gbx_tijd.Foreground = Brushes.White;
+                gbx_afstand.Foreground = Brushes.White;
+                gbx_com.BorderBrush = Brushes.White;
+                gbx_tijd.BorderBrush = Brushes.White;
+                gbx_afstand.BorderBrush = Brushes.White;
+                lbl_darkmode.Foreground = Brushes.White;
+                btn_start.Background = brush;
+                btn_start.BorderBrush = brush;
+            }
+            else
+            {
+                scp_main.Background = Brushes.White;
+                gbx_com.Foreground = Brushes.Black;
+                gbx_tijd.Foreground = Brushes.Black;
+                gbx_afstand.Foreground = Brushes.Black;
+                gbx_com.BorderBrush = Brushes.Gray;
+                gbx_tijd.BorderBrush = Brushes.Gray;
+                gbx_afstand.BorderBrush = Brushes.Gray;
+                lbl_darkmode.Foreground = Brushes.Black;
+                btn_start.Background = Brushes.White;
+                btn_start.BorderBrush = Brushes.White;
+            }
         }
     }
 }
