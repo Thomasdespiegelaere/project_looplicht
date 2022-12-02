@@ -85,18 +85,16 @@ namespace project_looplicht
                 }
                 else
                 {
-                    _i = 0;
                     _dispatcherTimer.Stop();
-                    _data[95] = 0;
-                    _data[94] = 0;
-                    _data[93] = 0;
+                    _i = 0;
+                    Array.Clear(_data, 0, _data.Length);
                     _serialPort.Write(_data, 0, 96);
                 }
-                if (_i > 3)
+                if (_i > 6)
                 {
-                    _data[_i - 3] = 0;
-                    _data[_i - 4] = 0;
-                    _data[_i - 5] = 0;
+                    _data[_i - 6] = 0;
+                    _data[_i - 7] = 0;
+                    _data[_i - 8] = 0;
                     _serialPort.Write(_data, 0, _data.Length);
                 }
             }
@@ -108,6 +106,7 @@ namespace project_looplicht
             berekening.Tijd = tbx_tijd.Text;
             berekening.Afstand = tbx_afstand.Text;
             berekening.AantalLeds = 32;
+
 
             _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(berekening.BerekenWachtTijd());
             _dispatcherTimer.Tick += leds;
