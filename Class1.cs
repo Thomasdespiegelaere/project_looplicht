@@ -66,6 +66,10 @@ namespace Looplicht
 			set { aantalLeds = value; }
 		}
 
+		/// <summary>
+		/// berkend de tijd tussen de leds.
+		/// </summary>
+		/// <returns>double</returns>
 		public double BerekenWachtTijd()
 		{
 			double vertraging = ((Convert.ToDouble(tijd) / aantalLeds) * 1000.0) - 182;  // 182 is ongeveer de verstuurtijd van seriele COM

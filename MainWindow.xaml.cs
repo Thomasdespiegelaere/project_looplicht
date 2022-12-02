@@ -29,6 +29,8 @@ namespace project_looplicht
         byte[] _data;
         DispatcherTimer _dispatcherTimer;
         int _i;
+        double val;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -84,11 +86,17 @@ namespace project_looplicht
                     _data[_i + 2] = Convert.ToByte(sldr_Blue.Value);
                     _serialPort.Write(_data, 0, _data.Length);
                     _i += 3;
+                    pbStatus.Value += 1;
+                    val += 23.125;
+                    img_run.Margin = new Thickness(val, 0, 0, 0);
                 }
                 else
                 {
                     _dispatcherTimer.Stop();
                     _i = 0;
+                    val = -370;
+                    img_run.Margin = new Thickness(val, 0, 0, 0);
+                    pbStatus.Value = 0;
                     Array.Clear(_data, 0, _data.Length);
                     _serialPort.Write(_data, 0, 96);
                 }
@@ -108,6 +116,7 @@ namespace project_looplicht
             berekening.Tijd = tbx_tijd.Text;
             berekening.Afstand = tbx_afstand.Text;
             berekening.AantalLeds = 32;
+            val = -370;
 
             _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(berekening.BerekenWachtTijd());
             _dispatcherTimer.Start();

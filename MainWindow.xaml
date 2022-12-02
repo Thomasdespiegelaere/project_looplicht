@@ -28,6 +28,10 @@
             </Button>
             <Label Margin="10, 25, 0, 10" Name="lbl_darkmode">Darkmode: </Label>
             <CheckBox Width="20" Height="20" BorderThickness="2" Margin="0, 10, 10, 10" Name="cbx_darkmode" Click="cbx_darkmode_Click"></CheckBox>
+            <Grid Margin="20">
+                <ProgressBar Minimum="0" Maximum="32" Value="0" Name="pbStatus" Width="400" Height="30"/>
+                <Image Source="/athletics_icon-icons.com_67243.png" HorizontalAlignment="Center" Margin="-370, 0, 0, 0" Name="img_run"/>
+            </Grid>
         </StackPanel>
     </StackPanel>
 </Window>
