@@ -45,7 +45,9 @@ namespace project_looplicht
 
             _data = new byte[96];
 
-            _dispatcherTimer = new DispatcherTimer();            
+            _dispatcherTimer = new DispatcherTimer(DispatcherPriority.Normal);
+            _dispatcherTimer.Tick += leds;
+
         }
 
         private void cbxPortName_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,8 +68,8 @@ namespace project_looplicht
         {
             if (_serialPort != null && _serialPort.IsOpen)
             {
-                byte[] data = new byte[96];
-                _serialPort.Write(data, 0, 96);
+                Array.Clear(_data, 0, _data.Length);
+                _serialPort.Write(_data, 0, 96);
                 _serialPort.Dispose();
             }                      
         }
@@ -107,9 +109,7 @@ namespace project_looplicht
             berekening.Afstand = tbx_afstand.Text;
             berekening.AantalLeds = 32;
 
-
             _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(berekening.BerekenWachtTijd());
-            _dispatcherTimer.Tick += leds;
             _dispatcherTimer.Start();
         }
 
