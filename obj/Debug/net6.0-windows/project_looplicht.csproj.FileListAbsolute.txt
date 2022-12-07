@@ -28,3 +28,8 @@ C:\Users\tdesp\OneDrive\Documenten\Vives Fase 1\ICT\project_looplicht\obj\Debug\
 C:\Users\tdesp\OneDrive\Documenten\Vives Fase 1\ICT\project_looplicht\obj\Debug\net6.0-windows\project_looplicht.pdb
 C:\Users\tdesp\OneDrive\Documenten\Vives Fase 1\ICT\project_looplicht\obj\Debug\net6.0-windows\project_looplicht.genruntimeconfig.cache
 C:\Users\tdesp\OneDrive\Documenten\Vives Fase 1\ICT\project_looplicht\obj\Debug\net6.0-windows\ref\project_looplicht.dll
+C:\Users\tdesp\OneDrive\Documenten\Vives Fase 1\ICT\project_looplicht\bin\Debug\net6.0-windows\3.png
+C:\Users\tdesp\OneDrive\Documenten\Vives Fase 1\ICT\project_looplicht\obj\Debug\net6.0-windows\project_looplicht_Content.g.cs
+C:\Users\tdesp\OneDrive\Documenten\Vives Fase 1\ICT\project_looplicht\bin\Debug\net6.0-windows\2.png
+C:\Users\tdesp\OneDrive\Documenten\Vives Fase 1\ICT\project_looplicht\bin\Debug\net6.0-windows\4.png
+C:\Users\tdesp\OneDrive\Documenten\Vives Fase 1\ICT\project_looplicht\bin\Debug\net6.0-windows\1491313953-play_82992.png

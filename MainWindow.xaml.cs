@@ -30,6 +30,7 @@ namespace project_looplicht
         DispatcherTimer _dispatcherTimer;
         int _i;
         double val;
+        int img_switch = 0;
 
         public MainWindow()
         {
@@ -89,6 +90,18 @@ namespace project_looplicht
                     pbStatus.Value += 1;
                     val += 23.125;
                     img_run.Margin = new Thickness(val, 0, 0, 0);
+                    if (img_switch % 3 == 0)
+                    {
+                        img_run.Source = new BitmapImage(new Uri("/3.png", UriKind.Relative));
+                    }
+                    else if (img_switch % 3 == 1)
+                    {
+                        img_run.Source = new BitmapImage(new Uri("/4.png", UriKind.Relative));
+                    }
+                    else
+                    {
+                        img_run.Source = new BitmapImage(new Uri("/2.png", UriKind.Relative));
+                    }
                 }
                 else
                 {
@@ -108,6 +121,7 @@ namespace project_looplicht
                     _serialPort.Write(_data, 0, _data.Length);
                 }
             }
+            img_switch += 1;
         }
 
         private void btn_start_Click(object sender, RoutedEventArgs e)

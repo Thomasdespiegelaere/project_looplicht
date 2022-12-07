@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:project_looplicht"
         x:Class="project_looplicht.MainWindow"
         mc:Ignorable="d"
-        Title="looplicht" Height="450" Width="800" Closing="Window_Closing" Background="white" Icon="/athletics_icon-icons.com_67243.png" SizeChanged="Window_SizeChanged">
+        Title="looplicht" Height="450" Width="800" Closing="Window_Closing" Background="white" Icon="/2.png" SizeChanged="Window_SizeChanged">
     <StackPanel Orientation="Vertical" Name="scp_main">
         <GroupBox Header="COM-poort" Foreground="Black" Padding="10" Margin="10" Name="gbx_com" BorderBrush="Gray">
             <ComboBox x:Name="cbxPortName" Margin="10" SelectionChanged="cbxPortName_SelectionChanged"/>
@@ -30,7 +30,7 @@
             <CheckBox Width="20" Height="20" BorderThickness="2" Margin="0, 10, 10, 10" Name="cbx_darkmode" Click="cbx_darkmode_Click"></CheckBox>
             <Grid Margin="20">
                 <ProgressBar Minimum="0" Maximum="32" Value="0" Name="pbStatus" Width="400" Height="30"/>
-                <Image Source="/athletics_icon-icons.com_67243.png" HorizontalAlignment="Center" Margin="-370, 0, 0, 0" Name="img_run"/>
+                <Image Source="/2.png" HorizontalAlignment="Center" Margin="-370, 0, 0, 0" Name="img_run"/>
             </Grid>
         </StackPanel>
     </StackPanel>

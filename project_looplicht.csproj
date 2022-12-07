@@ -9,8 +9,26 @@
 
   <ItemGroup>
     <None Remove="1491313953-play_82992.png" />
+    <None Remove="2.png" />
+    <None Remove="3.png" />
+    <None Remove="4.png" />
     <None Remove="athletics_icon-icons.com_67243.png" />
     <None Remove="sport_track_1524.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="1491313953-play_82992.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -18,8 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="1491313953-play_82992.png" />
-    <Resource Include="athletics_icon-icons.com_67243.png" />
+    <None Update="giphy.gif">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
