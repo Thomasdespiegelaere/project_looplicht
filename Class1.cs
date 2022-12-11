@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -12,8 +13,12 @@ namespace Looplicht
 {
     internal class berekening
     {
+		public bool start { get; set; }
+		public berekening()
+		{
+			start = true;
+		}
 		private string tijd;
-
 		public string Tijd
 		{
 			get { return tijd; }
@@ -30,8 +35,9 @@ namespace Looplicht
                 }
 				else
 				{
-					MessageBox.Show("geef een tijd in");
-				}
+					Message();
+                    start = false;
+                }
             }
 		}
 
@@ -53,7 +59,8 @@ namespace Looplicht
                 }
                 else
                 {
-                    MessageBox.Show("geef een afstand in");
+					Message();
+                    start = false;
                 } 
             }
 		}
@@ -74,6 +81,10 @@ namespace Looplicht
 		{
 			double vertraging = ((Convert.ToDouble(tijd) / aantalLeds) * 1000.0) - 182;  // 182 is ongeveer de verstuurtijd van seriele COM
 			return vertraging;															 // + de tijd die het duurt om de loop door te nemen.
+        }
+		public void Message()
+		{
+            MessageBox.Show("Vul alle vakken in.");
         }
     }
 }

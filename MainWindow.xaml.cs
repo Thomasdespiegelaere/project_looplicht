@@ -29,7 +29,7 @@ namespace project_looplicht
         byte[] _data;
         DispatcherTimer _dispatcherTimer;
         int _i;
-        double val;
+        double _val;
         int img_switch = 0;
 
         public MainWindow()
@@ -50,6 +50,8 @@ namespace project_looplicht
 
             _dispatcherTimer = new DispatcherTimer(DispatcherPriority.Normal);
             _dispatcherTimer.Tick += leds;
+
+            _val = -370;
 
         }
 
@@ -88,8 +90,8 @@ namespace project_looplicht
                     _serialPort.Write(_data, 0, _data.Length);
                     _i += 3;
                     pbStatus.Value += 1;
-                    val += 23.125;
-                    img_run.Margin = new Thickness(val, 0, 0, 0);
+                    _val += 23.125;
+                    img_run.Margin = new Thickness(_val, 0, 0, 0);
                     if (img_switch % 3 == 0)
                     {
                         img_run.Source = new BitmapImage(new Uri("/3.png", UriKind.Relative));
@@ -107,8 +109,8 @@ namespace project_looplicht
                 {
                     _dispatcherTimer.Stop();
                     _i = 0;
-                    val = -370;
-                    img_run.Margin = new Thickness(val, 0, 0, 0);
+                    _val = -370;
+                    img_run.Margin = new Thickness(_val, 0, 0, 0);
                     pbStatus.Value = 0;
                     Array.Clear(_data, 0, _data.Length);
                     _serialPort.Write(_data, 0, 96);
@@ -130,10 +132,12 @@ namespace project_looplicht
             berekening.Tijd = tbx_tijd.Text;
             berekening.Afstand = tbx_afstand.Text;
             berekening.AantalLeds = 32;
-            val = -370;
 
-            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(berekening.BerekenWachtTijd());
-            _dispatcherTimer.Start();
+            if (berekening.start == true)
+            {
+                _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(berekening.BerekenWachtTijd());
+                _dispatcherTimer.Start();
+            }
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
