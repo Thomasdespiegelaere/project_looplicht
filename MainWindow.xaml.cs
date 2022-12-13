@@ -17,6 +17,7 @@ using System.IO.Ports;
 using System.Threading;
 using System.Windows.Markup;
 using Looplicht;
+using System.Windows.Controls.Primitives;
 
 namespace project_looplicht
 {
@@ -151,31 +152,26 @@ namespace project_looplicht
         {
             if ((bool)cbx_darkmode.IsChecked)
             {
-                SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(48, 48, 48));
-                scp_main.Background = brush;
-                gbx_com.Foreground = Brushes.White;
-                gbx_tijd.Foreground = Brushes.White;
-                gbx_afstand.Foreground = Brushes.White;
-                gbx_com.BorderBrush = Brushes.White;
-                gbx_tijd.BorderBrush = Brushes.White;
-                gbx_afstand.BorderBrush = Brushes.White;
-                lbl_darkmode.Foreground = Brushes.White;
-                btn_start.Background = brush;
-                btn_start.BorderBrush = brush;
+                theme(new SolidColorBrush(Color.FromRgb(48, 48, 48)), new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.White));
             }
             else
             {
-                scp_main.Background = Brushes.White;
-                gbx_com.Foreground = Brushes.Black;
-                gbx_tijd.Foreground = Brushes.Black;
-                gbx_afstand.Foreground = Brushes.Black;
-                gbx_com.BorderBrush = Brushes.Gray;
-                gbx_tijd.BorderBrush = Brushes.Gray;
-                gbx_afstand.BorderBrush = Brushes.Gray;
-                lbl_darkmode.Foreground = Brushes.Black;
-                btn_start.Background = Brushes.White;
-                btn_start.BorderBrush = Brushes.White;
+                theme(new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.Gray), new SolidColorBrush(Colors.Black));
             }
+        }
+
+        private void theme(SolidColorBrush background, SolidColorBrush borderbrush, SolidColorBrush textcolor)
+        {
+            scp_main.Background = background;
+            gbx_com.Foreground = textcolor;
+            gbx_tijd.Foreground = textcolor;
+            gbx_afstand.Foreground = textcolor;
+            gbx_com.BorderBrush = borderbrush;
+            gbx_tijd.BorderBrush = borderbrush;
+            gbx_afstand.BorderBrush = borderbrush;
+            lbl_darkmode.Foreground = textcolor;
+            btn_start.Background = background;
+            btn_start.BorderBrush = background;
         }
     }
 }
