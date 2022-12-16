@@ -31,7 +31,7 @@ namespace project_looplicht
         DispatcherTimer _dispatcherTimer;
         int _i;
         double _val;
-        int img_switch = 0;
+        int _img_switch = 0;
 
         public MainWindow()
         {
@@ -93,11 +93,11 @@ namespace project_looplicht
                     pbStatus.Value += 1;
                     _val += 23.125;
                     img_run.Margin = new Thickness(_val, 0, 0, 0);
-                    if (img_switch % 3 == 0)
+                    if (_img_switch % 3 == 0)
                     {
                         img_run.Source = new BitmapImage(new Uri("/3.png", UriKind.Relative));
                     }
-                    else if (img_switch % 3 == 1)
+                    else if (_img_switch % 3 == 1)
                     {
                         img_run.Source = new BitmapImage(new Uri("/4.png", UriKind.Relative));
                     }
@@ -124,7 +124,7 @@ namespace project_looplicht
                     _serialPort.Write(_data, 0, _data.Length);
                 }
             }
-            img_switch += 1;
+            _img_switch += 1;
         }
 
         private void btn_start_Click(object sender, RoutedEventArgs e)
@@ -147,19 +147,6 @@ namespace project_looplicht
             sldr_Red.Width = scp_main.ActualWidth / 3 - 20;
             sldr_Green.Width = scp_main.ActualWidth / 3 - 20;
         }
-
-        private void cbx_darkmode_Click(object sender, RoutedEventArgs e)
-        {
-            if ((bool)cbx_darkmode.IsChecked)
-            {
-                theme(new SolidColorBrush(Color.FromRgb(48, 48, 48)), new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.White));
-            }
-            else
-            {
-                theme(new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.Gray), new SolidColorBrush(Colors.Black));
-            }
-        }
-
         private void theme(SolidColorBrush background, SolidColorBrush borderbrush, SolidColorBrush textcolor)
         {
             scp_main.Background = background;
@@ -169,9 +156,23 @@ namespace project_looplicht
             gbx_com.BorderBrush = borderbrush;
             gbx_tijd.BorderBrush = borderbrush;
             gbx_afstand.BorderBrush = borderbrush;
-            lbl_darkmode.Foreground = textcolor;
             btn_start.Background = background;
             btn_start.BorderBrush = background;
+            mb.Background = background;
+            mb.BorderBrush = borderbrush;
+            mb.Foreground = textcolor;
+        }
+
+        private void btn_theme_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender == btn_DarkMode)
+            {
+                theme(new SolidColorBrush(Color.FromRgb(48, 48, 48)), new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.White));
+            }
+            else
+            {
+                theme(new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.Gray), new SolidColorBrush(Colors.Black));
+            }
         }
     }
 }

@@ -8,6 +8,15 @@
         mc:Ignorable="d"
         Title="looplicht" Height="450" Width="800" Closing="Window_Closing" Background="white" Icon="/2.png" SizeChanged="Window_SizeChanged">
     <StackPanel Orientation="Vertical" Name="scp_main">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Name="mb" Background="White" BorderBrush="White" Foreground="Black">
+                <MenuItem Header="Theme">
+                    <MenuItem Header="Light Mode" Name="btn_lightMode" Click="btn_theme_Click" Foreground="Black"/>
+                    <MenuItem Header="Dark Mode" Name="btn_DarkMode" Click="btn_theme_Click" Foreground="Black"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
         <GroupBox Header="COM-poort" Foreground="Black" Padding="10" Margin="10" Name="gbx_com" BorderBrush="Gray">
             <ComboBox x:Name="cbxPortName" Margin="10" SelectionChanged="cbxPortName_SelectionChanged"/>
         </GroupBox>
@@ -26,12 +35,10 @@
             <Button x:Name="btn_start" Margin="10, 10, 10, 10" Click="btn_start_Click" Width="70" Background="White" BorderBrush="White">
                 <Image Width="70" Height="60" Source="/1491313953-play_82992.png"></Image>
             </Button>
-            <Label Margin="10, 25, 0, 10" Name="lbl_darkmode">Darkmode: </Label>
-            <CheckBox Width="20" Height="20" BorderThickness="2" Margin="0, 10, 10, 10" Name="cbx_darkmode" Click="cbx_darkmode_Click"></CheckBox>
             <Grid Margin="20">
                 <ProgressBar Minimum="0" Maximum="32" Value="0" Name="pbStatus" Width="400" Height="30"/>
                 <Image Source="/2.png" HorizontalAlignment="Center" Margin="-370, 0, 0, 0" Name="img_run"/>
             </Grid>
         </StackPanel>
-    </StackPanel>
+    </StackPanel>    
 </Window>
