@@ -50,7 +50,7 @@ namespace project_looplicht
             _data = new byte[96];
 
             _dispatcherTimer = new DispatcherTimer(DispatcherPriority.Normal);
-            _dispatcherTimer.Tick += leds;
+            _dispatcherTimer.Tick += Leds;
 
             _val = -370;
 
@@ -79,7 +79,7 @@ namespace project_looplicht
                 _serialPort.Dispose();
             }                      
         }
-        public void leds(object? sender, EventArgs e)
+        public void Leds(object? sender, EventArgs e)
         {
             if (_serialPort != null && _serialPort.IsOpen)
             {
@@ -93,17 +93,17 @@ namespace project_looplicht
                     pbStatus.Value += 1;
                     _val += 23.125;
                     img_run.Margin = new Thickness(_val, 0, 0, 0);
-                    if (_img_switch % 3 == 0)
+                    switch (_img_switch % 3)
                     {
-                        img_run.Source = new BitmapImage(new Uri("/3.png", UriKind.Relative));
-                    }
-                    else if (_img_switch % 3 == 1)
-                    {
-                        img_run.Source = new BitmapImage(new Uri("/4.png", UriKind.Relative));
-                    }
-                    else
-                    {
-                        img_run.Source = new BitmapImage(new Uri("/2.png", UriKind.Relative));
+                        case 0:
+                            img_run.Source = new BitmapImage(new Uri("/3.png", UriKind.Relative));
+                            break;
+                        case 1:
+                            img_run.Source = new BitmapImage(new Uri("/4.png", UriKind.Relative));
+                            break;
+                        default:
+                            img_run.Source = new BitmapImage(new Uri("/2.png", UriKind.Relative));
+                            break;
                     }
                 }
                 else
@@ -147,7 +147,7 @@ namespace project_looplicht
             sldr_Red.Width = scp_main.ActualWidth / 3 - 20;
             sldr_Green.Width = scp_main.ActualWidth / 3 - 20;
         }
-        private void theme(SolidColorBrush background, SolidColorBrush borderbrush, SolidColorBrush textcolor)
+        private void Theme(SolidColorBrush background, SolidColorBrush borderbrush, SolidColorBrush textcolor)
         {
             scp_main.Background = background;
             gbx_com.Foreground = textcolor;
@@ -167,11 +167,11 @@ namespace project_looplicht
         {
             if (sender == btn_DarkMode)
             {
-                theme(new SolidColorBrush(Color.FromRgb(48, 48, 48)), new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.White));
+                Theme(new SolidColorBrush(Color.FromRgb(48, 48, 48)), new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.White));
             }
             else
             {
-                theme(new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.Gray), new SolidColorBrush(Colors.Black));
+                Theme(new SolidColorBrush(Colors.White), new SolidColorBrush(Colors.Gray), new SolidColorBrush(Colors.Black));
             }
         }
     }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:project_looplicht"
         x:Class="project_looplicht.MainWindow"
         mc:Ignorable="d"
-        Title="looplicht" Height="450" Width="800" Closing="Window_Closing" Background="white" Icon="/2.png" SizeChanged="Window_SizeChanged">
+        Title="looplicht" Height="450" Width="800" Closing="Window_Closing" Background="White" Icon="/2.png" SizeChanged="Window_SizeChanged">
     <StackPanel Orientation="Vertical" Name="scp_main">
         <DockPanel>
             <Menu DockPanel.Dock="Top" Name="mb" Background="White" BorderBrush="White" Foreground="Black">
